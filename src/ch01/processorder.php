@@ -7,11 +7,10 @@
 <h2>Order Results</h2>
 <?php
 
-$tireqty = $_POST['tireqty'];
-$oilqty = $_POST['oilqty'];
-$sparkqty = $_POST['sparkqty'];
-
-
+  $tireqty = $_POST['tireqty'];
+  $oilqty = $_POST['oilqty'];
+  $sparkqty = $_POST['sparkqty'];
+  $find = $_POST['find'];
 
   echo '<p>Order processed at ';
   echo date('H:i, jS F');
@@ -19,10 +18,8 @@ $sparkqty = $_POST['sparkqty'];
 
   if($tireqty == 0){
     echo 'You did not order anything on the previous page!<br />';
+    exit;
   }
-
-
-
 
   $totalqty = 0;
   $totalamount = 0.00;
@@ -36,11 +33,11 @@ $sparkqty = $_POST['sparkqty'];
   }else {
       echo '<p>Your order is as follows: </p>';
       if ($tireqty > 0)
-        echo $tireqty.' tires<br />';
+        echo htmlspecialchars($tireqty).' tires<br />';
       if ($oilqty > 0)
-        echo $oilqty.' bottles of oil<br />';
+        echo htmlspecialchars($oilqty).' bottles of oil<br />';
       if ($sparkqty > 0)
-        echo $sparkqty.' spark plugs<br />';
+        echo htmlspecialchars($sparkqty).' spark plugs<br />';
   }
   echo 'Items ordered: '.$totalqty.'<br />';
 
@@ -70,6 +67,17 @@ $sparkqty = $_POST['sparkqty'];
   $totalamount = ($totalamount * (1 + $taxrate)) * (100 - $discount) / 100;
   echo 'Total including tax: $'.number_format($totalamount,2).'<br />';
 
+  if($find == "a"){
+      echo "<p>Regular customer.</p>>";
+  } elseif ($find == "b"){
+      echo "<p>Customer referred by TV advert.</p>>";
+  } elseif ($find == "c"){
+      echo "<p>Customer referred by phone directory.</p>";
+  } elseif ($find == "d"){
+      echo "<p>Customer referred by word of mouth.</p>";
+  } else {
+    echo "<p>We do not know how this customer found us.</p>";
+  }
 ?>
 </body>
 </html>
