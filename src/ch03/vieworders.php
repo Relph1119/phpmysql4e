@@ -6,7 +6,7 @@ $orders = file(str_replace( '\\' , '/' , realpath(dirname(__FILE__).'/../../')).
 
 $number_of_orders = count($orders);
 if ($number_of_orders == 0) {
-  echo "<p><strong>No orders pending.
+  echo "<p><strong>No orders pending.</br>
        Please try again later.</strong></p>";
 }
 

@@ -32,7 +32,7 @@ $test = substr_replace($test, 'X', -1);
 echo $test;
 
 $address = "username@example.com";
-$arr = mbsplit("\.|@", $address);
+$arr = preg_split("/\.|@/", $address);
 while (list($key, $value) = each($arr)){
     echo "<br />".$value;
 }

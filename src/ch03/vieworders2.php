@@ -5,6 +5,18 @@
 <html>
 <head>
   <title>Bob's Auto Parts - Customer Orders</title>
+    
+  <style type="text/css">
+      table, th, td {
+          border-collapse: collapse;
+          border: 1px solid black;
+          padding: 6px;
+      }
+      th {
+          background: #cccfff;
+      }
+      
+  </style>  
 </head>
 <body>
 <h1>Bob's Auto Parts</h1>
@@ -22,13 +34,13 @@
           Please try again later.</strong></p>";
   }
 
-  echo "<table border=\"1\">\n";
-  echo "<tr><th bgcolor=\"#CCCCFF\">Order Date</th>
-            <th bgcolor=\"#CCCCFF\">Tires</th>
-            <th bgcolor=\"#CCCCFF\">Oil</th>
-            <th bgcolor=\"#CCCCFF\">Spark Plugs</th>
-            <th bgcolor=\"#CCCCFF\">Total</th>
-            <th bgcolor=\"#CCCCFF\">Address</th>
+  echo "<table>\n";
+  echo "<tr><th>Order Date</th>
+            <th>Tires</th>
+            <th>Oil</th>
+            <th>Spark Plugs</th>
+            <th>Total</th>
+            <th>Address</th>
          <tr>";
 
   for ($i=0; $i<$number_of_orders; $i++) {
@@ -43,10 +55,10 @@
     // output each order
     echo "<tr>
              <td>".$line[0]."</td>
-             <td align=\"right\">".$line[1]."</td>
-             <td align=\"right\">".$line[2]."</td>
-             <td align=\"right\">".$line[3]."</td>
-             <td align=\"right\">".$line[4]."</td>
+             <td style='text-align: right;'>".$line[1]."</td>
+             <td style='text-align: right;'>".$line[2]."</td>
+             <td style='text-align: right;'>".$line[3]."</td>
+             <td style='text-align: right;'>".$line[4]."</td>
              <td>".$line[5]."</td>
           </tr>";
   }

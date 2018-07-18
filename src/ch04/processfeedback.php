@@ -10,7 +10,7 @@ $toaddress = "feedback@example.com";
 
 $subject = "Feedback from web site";
 
-$mailcontent = "Customer name: ".$name."\n".
+$mailcontent = "Customer name: ".filter_var($name)."\n".
 			   "Customer email: ".$email."\n".
                "Customer comments:\n".$feedback."\n";
 
@@ -21,11 +21,11 @@ mail($toaddress, $subject, $mailcontent, $fromaddress);
 
 ?>
 <html>
-<head>
-<title>Bob's Auto Parts - Feedback Submitted</title>
-</head>
-<body>
-<h1>Feedback submitted</h1>
-<p>Your feedback has been sent.</p>
-</body>
+    <head>
+        <title>Bob's Auto Parts - Feedback Submitted</title>
+    </head>
+    <body>
+        <h1>Feedback submitted</h1>
+        <p>Your feedback has been sent.</p>
+    </body>
 </html>

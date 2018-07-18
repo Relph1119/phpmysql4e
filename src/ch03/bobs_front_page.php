@@ -13,13 +13,13 @@
 <body>
 
 <h1>Bob's Auto Parts</h1>
-<div align="center">
-<table width = 100%>
+<div align="center"> 
+<table style="width: 100%; border: 0;" >
 <tr>
 
 <?php
   for ($i = 0; $i < 3; $i++) {
-    echo "<td align=\"center\"><img src=\"";
+    echo "<td style='width: 33%; text-align: center;'><img src=\"";
     echo $pictures[$i];
     echo "\"/></td>";
   }

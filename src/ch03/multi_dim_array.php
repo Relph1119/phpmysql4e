@@ -10,6 +10,8 @@ $products = array( array( 'TIR', 'Tires', 100),
                     array( 'OIL', 'Oil', 10),
                     array( 'SPK', 'Spark Plugs', 4));
 
+//array_multisort($products);
+
 function compare1($x, $y) {
     if ($x[1] == $y[1]){
         return 0;
