@@ -1,0 +1,1 @@
+delete from customers where customerid = 5;
