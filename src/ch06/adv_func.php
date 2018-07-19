@@ -19,27 +19,29 @@ class Math {
 }
 
 echo " Math::pi = ".Math::pi."\n";
-echo Math::squared(8);
+echo Math::squared(8)."<br />";
 
 /**
  * Class A
  * 延迟静态绑定
  */
 class A {
-    public static function who(){
-        echo __CLASS__;
+    public static function whichclass(){
+        echo __CLASS__."<br />";
     }
     public static function test(){
-        static::who();
+//        self::whichclass();
+        static::whichclass();
     }
 }
 
 class B extends A {
-    public static function who(){
-        echo __CLASS__;
+    public static function whichclass(){
+        echo __CLASS__."<br />";
     }
 }
 
+A::test();
 B::test();
 
 /**

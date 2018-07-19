@@ -4,51 +4,61 @@
 </head>
 <body>
 <h1>Book-O-Rama Search Results</h1>
+
 <?php
-  // create short variable names
-  $searchtype=$_POST['searchtype'];
-  $searchterm=trim($_POST['searchterm']);
+    // create short variable names
+    $searchtype=$_POST['searchtype'];
+    $searchterm=trim($_POST['searchterm']);
 
-  if (!$searchtype || !$searchterm) {
-     echo 'You have not entered search details.  Please go back and try again.';
-     exit;
-  }
+    if (!$searchtype || !$searchterm) {
+        echo '<p>You have not entered search details.<br />  
+            Please go back and try again.</p>';
+        exit;
+    }
 
-  if (!get_magic_quotes_gpc()){
-    $searchtype = addslashes($searchtype);
-    $searchterm = addslashes($searchterm);
-  }
+    // whitelist the searchtype
+    switch ($searchtype) {
+        case 'Title':
+        case 'Author':
+        case 'ISBN':
+            break;
+        default:
+            echo '<p>That is not a valid search type. <br/>
+                      Please go back and try again.</p>';
+            exit;
+    }
 
-  @ $db = new mysqli('localhost', 'bookorama', 'bookorama123', 'books');
+    $db = new mysqli('localhost', 'bookorama', 'bookorama123', 'books');
 
-  if (mysqli_connect_errno()) {
-     echo 'Error: Could not connect to database.  Please try again later.';
-     exit;
-  }
+    if (mysqli_connect_errno()) {
+        echo '<p>Error: Could not connect to database.<br/>  
+               Please try again later.</p>';
+        exit;
+    }
 
-  $query = "select * from books where ".$searchtype." like '%".$searchterm."%'";
-  $result = $db->query($query);
+    $query = "select ISBN, Author, Title, Price from books where $searchtype = ?";
+    $stmt = $db->prepare($query);
+    $stmt->bind_param('s', $searchterm);
+    $stmt->execute();
+    $stmt->store_result();
 
-  $num_results = $result->num_rows;
+    $stmt->bind_result($isbn, $author, $title, $price);
 
-  echo "<p>Number of books found: ".$num_results."</p>";
+    echo "<p>Number of books found: ".$stmt->num_rows."</p>";
 
-  for ($i=0; $i <$num_results; $i++) {
-     $row = $result->fetch_assoc();
-     echo "<p><strong>".($i+1).". Title: ";
-     echo htmlspecialchars(stripslashes($row['title']));
-     echo "</strong><br />Author: ";
-     echo stripslashes($row['author']);
-     echo "<br />ISBN: ";
-     echo stripslashes($row['isbn']);
-     echo "<br />Price: ";
-     echo stripslashes($row['price']);
-     echo "</p>";
-  }
+    while($stmt->fetch()) {
+        echo "<p><strong>Title: ".$title."</strong>";
+        echo "<br />Author: ".$author;
+        echo "<br />ISBN: ".$isbn;
+        echo "<br />Price: \$".number_format($price, 2)."</p>";
+    }
 
-  $result->free();
-  $db->close();
+    $stmt->free_result();
+    $db->close();
 
 ?>
+
 </body>
 </html>
+
+

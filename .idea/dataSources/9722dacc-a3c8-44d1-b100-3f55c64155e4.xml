@@ -915,74 +915,70 @@
     <table id="229" parent="2" name="book_reviews"/>
     <table id="230" parent="2" name="books"/>
     <table id="231" parent="2" name="customers"/>
-    <table id="232" parent="2" name="order_items">
-      <Engine>InnoDB</Engine>
-    </table>
-    <table id="233" parent="2" name="orders">
-      <Engine>InnoDB</Engine>
-    </table>
-    <column id="234" parent="229" name="isbn">
+    <table id="232" parent="2" name="order_items"/>
+    <table id="233" parent="2" name="orders"/>
+    <column id="234" parent="229" name="ISBN">
       <Position>1</Position>
       <DataType>char(13)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="235" parent="229" name="review">
+    <column id="235" parent="229" name="Review">
       <Position>2</Position>
       <DataType>text|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <key id="236" parent="229" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>isbn</ColNames>
+      <ColNames>ISBN</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="237" parent="230" name="isbn">
+    <column id="237" parent="230" name="ISBN">
       <Position>1</Position>
       <DataType>char(13)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="238" parent="230" name="author">
+    <column id="238" parent="230" name="Author">
       <Position>2</Position>
       <DataType>char(50)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="239" parent="230" name="title">
+    <column id="239" parent="230" name="Title">
       <Position>3</Position>
       <DataType>char(100)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="240" parent="230" name="price">
+    <column id="240" parent="230" name="Price">
       <Position>4</Position>
       <DataType>float(4,2 digit)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <key id="241" parent="230" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>isbn</ColNames>
+      <ColNames>ISBN</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="242" parent="231" name="customerid">
+    <column id="242" parent="231" name="CustomerID">
       <Position>1</Position>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="243" parent="231" name="name">
+    <column id="243" parent="231" name="Name">
       <Position>2</Position>
       <DataType>char(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="244" parent="231" name="address">
+    <column id="244" parent="231" name="Address">
       <Position>3</Position>
       <DataType>char(100)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="245" parent="231" name="city">
+    <column id="245" parent="231" name="City">
       <Position>4</Position>
       <DataType>char(30)|0s</DataType>
       <NotNull>1</NotNull>
@@ -990,59 +986,67 @@
     </column>
     <key id="246" parent="231" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>customerid</ColNames>
+      <ColNames>CustomerID</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="247" parent="232" name="orderid">
+    <column id="247" parent="232" name="OrderID">
       <Position>1</Position>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="248" parent="232" name="isbn">
+    <column id="248" parent="232" name="ISBN">
       <Position>2</Position>
       <DataType>char(13)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="249" parent="232" name="quantity">
+    <column id="249" parent="232" name="Quantity">
       <Position>3</Position>
       <DataType>tinyint(3) unsigned|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="250" parent="232" name="PRIMARY">
+    <index id="250" parent="232" name="ISBN">
+      <ColNames>ISBN</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="251" parent="232" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>orderid
-isbn</ColNames>
+      <ColNames>OrderID
+ISBN</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="251" parent="233" name="orderid">
+    <column id="252" parent="233" name="OrderID">
       <Position>1</Position>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="252" parent="233" name="customerid">
+    <column id="253" parent="233" name="CustomerID">
       <Position>2</Position>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="253" parent="233" name="amount">
+    <column id="254" parent="233" name="Amount">
       <Position>3</Position>
       <DataType>float(6,2 digit)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="254" parent="233" name="date">
+    <column id="255" parent="233" name="Date">
       <Position>4</Position>
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="255" parent="233" name="PRIMARY">
+    <index id="256" parent="233" name="CustomerID">
+      <ColNames>CustomerID</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="257" parent="233" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>orderid</ColNames>
+      <ColNames>OrderID</ColNames>
       <Primary>1</Primary>
     </key>
   </database-model>

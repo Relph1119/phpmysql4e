@@ -5,20 +5,22 @@
         echo "This function requires two numbers.";
         return;
     }
-    if ($x>=$y)
+    if ($x>=$y) {
         echo $x."<br />";
-    else
+    } else {
         echo $y."<br />";
+    }
 }*/
 
 function larger ($x, $y)
 {
-  if (!isset($x)||!isset($y))
-    return false;
-  else if ($x>=$y)
-    return $x;
-  else
-    return $y;
+  if (!isset($x)||!isset($y)) {
+      return false;
+  } else if ($x>=$y) {
+      return $x;
+  } else {
+      return $y;
+  }
 }
 
 $a = 1; $b = 2.5; $c = 1.9;

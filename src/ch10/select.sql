@@ -6,7 +6,7 @@ set name = 'Micheal Archer',
   address = '12 Adderley Avenue',
   city = 'Leeton';
 
-select name, city from customers
+select name, city from customers;
 
 select * from order_items;
 
@@ -14,13 +14,13 @@ select * from orders where customerid = 3;
 
 select * from orders where customerid = 3 or customerid = 4;
 
---简单的双表关联
+--简单的两表连接
 select orders.orderid, orders.amount, orders.date
 from customers, orders
 where customers.name = 'Julie Smith'
 and customers.customerid = orders.customerid;
 
---关联多个表
+--多表连接
 select customers.name
 from customers, orders, order_items, books
 where customers.customerid = orders.customerid
@@ -38,6 +38,8 @@ from customers left join orders
 using (customerid)
 where orders.orderid is null;
 
+insert into Customers values (NULL, 'George Napolitano', '177 Melbourne Road', 'Coburg');
+
 --使用表的别名
 select c.name
 from customers as c, orders as o, order_items as oi, books as b
@@ -51,7 +53,7 @@ from customers as c1, customers as c2
 where c1.city = c2.city
 and c1.name != c2.name;
 
---以特定的顺序获取数据
+--以特定的顺序读取数据
 select name, address
 from customers
 order by name;
@@ -64,16 +66,16 @@ select name, address
 from customers
 order by name desc;
 
---计算一个订单总金额的平均值
+--计算订单总金额的平均值
 select avg(amount) from orders;
 
---哪个顾客的订单总金额最大
+--哪个客户的订单总金额最大
 select customerid, avg(amount) from orders group by customerid;
 
---哪些顾客的平均订单总金额超过$50
+--哪些客户的订单平均金额超过$50
 select customerid, avg(amount) from orders group by customerid having avg(amount) > 50;
 
---选择要返回的行
+--选择要返回的数据行
 select name from customers limit 2, 3;
 
 --使用子查询

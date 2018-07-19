@@ -1,5 +1,5 @@
 <?php
-  require ("page.inc");
+  require("page.php");
 
   class ServicesPage extends Page
   {

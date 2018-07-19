@@ -1,34 +1,40 @@
-create table customers
-( customerid int unsigned not null auto_increment primary key,
-  name char(50) not null,
-  address char(100) not null,
-  city char(30) not null
+create table Customers
+( CustomerID int unsigned not null auto_increment primary key,
+  Name char(50) not null,
+  Address char(100) not null,
+  City char(30) not null
 );
 
-create table orders
-( orderid int unsigned not null auto_increment primary key,
-  customerid int unsigned not null,
-  amount float(6,2),
-  date date not null
+create table Orders
+( OrderID int unsigned not null auto_increment primary key,
+  CustomerID int unsigned not null,
+  Amount float(6,2),
+  Date date not null,
+  foreign key (CustomerID) REFERENCES Customers(CustomerID)
 );
 
-create table books
-(  isbn char(13) not null primary key,
-   author char(50),
-   title char(100),
-   price float(4,2)
+create table Books
+(  ISBN char(13) not null primary key,
+   Author char(50),
+   Title char(100),
+   Price float(4,2)
 );
 
-create table order_items
-( orderid int unsigned not null,
-  isbn char(13) not null,
-  quantity tinyint unsigned,
+create table Order_Items
+( OrderID int unsigned not null,
+  ISBN char(13) not null,
+  Quantity tinyint unsigned,
 
-  primary key (orderid, isbn)
+  primary key (OrderID, ISBN),
+  foreign key (OrderID) REFERENCES Orders(OrderID),
+  foreign key (ISBN) REFERENCES Books(ISBN)
 
 );
-create table book_reviews
+
+create table Book_Reviews
 (
-  isbn char(13) not null primary key,
-  review text
+  ISBN char(13) not null primary key,
+  Review TEXT,
+
+  FOREIGN KEY (ISBN) REFERENCES Books(ISBN)
 );

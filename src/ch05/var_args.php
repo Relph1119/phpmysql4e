@@ -18,10 +18,9 @@ var_args("hello", 47.3);
 function increment(&$value, $amount = 1){
   $value = $value + $amount;
 }
-$a = 10;
-echo $a.'<br />';
-increment($a);
-echo $a.'<br />';
+$value = 10;
+increment($value);
+echo $value.'<br />';
 
 
 ?>

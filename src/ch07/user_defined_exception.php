@@ -4,14 +4,9 @@ class myException extends Exception
 {
   function __toString()
   {
-       return "<table border=\"1\">
-       <tr>
-       <td><strong>Exception ".$this->getCode()."
+       return "<strong>Exception ".$this->getCode()."
        </strong>: ".$this->getMessage()."<br />"."
-       in ".$this->getFile()." on line ".$this->getLine()."
-       </td>
-       </tr>
-       </table><br />";
+       in ".$this->getFile()." on line ".$this->getLine()."<br />";
    }
 }
 

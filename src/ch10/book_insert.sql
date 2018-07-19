@@ -1,9 +1,9 @@
 use books;
 
 insert into customers values
-  (3, "Julie Smith", "25 Oak Street", "Airport West"),
-  (4, "Alan Wong", "1/47 Haines Avenue", "Box Hill"),
-  (5, "Michelle Arthur", "357 North Road", "Yarraville");
+  (1, "Julie Smith", "25 Oak Street", "Airport West"),
+  (2, "Alan Wong", "1/47 Haines Avenue", "Box Hill"),
+  (3, "Michelle Arthur", "357 North Road", "Yarraville");
 
 insert into orders values
   (NULL, 3, 69.98, "2007-04-02"),

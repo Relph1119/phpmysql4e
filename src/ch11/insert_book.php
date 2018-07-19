@@ -5,40 +5,37 @@
 <body>
 <h1>Book-O-Rama Book Entry Results</h1>
 <?php
+    if (!isset($_POST['ISBN']) || !isset($_POST['Author']) || !isset($_POST['Title']) || !isset($_POST['Price'])){
+        echo "<p>You have not entered all the required details.<br />"
+            ."Please go back and try again.</p>";
+        exit;
+    }
+
   // create short variable names
-  $isbn=$_POST['isbn'];
-  $author=$_POST['author'];
-  $title=$_POST['title'];
-  $price=$_POST['price'];
+      $isbn=$_POST['ISBN'];
+      $author=$_POST['Author'];
+      $title=$_POST['Title'];
+      $price=$_POST['Price'];
+      $price = doubleval($price);
 
-  if (!$isbn || !$author || !$title || !$price) {
-     echo "You have not entered all the required details.<br />"
-          ."Please go back and try again.";
-     exit;
-  }
-
-  if (!get_magic_quotes_gpc()) {
-    $isbn = addslashes($isbn);
-    $author = addslashes($author);
-    $title = addslashes($title);
-    $price = doubleval($price);
-  }
-
-  @ $db = new mysqli('localhost', 'bookorama', 'bookorama123', 'books');
+  @$db = new mysqli('localhost', 'bookorama', 'bookorama123', 'books');
 
   if (mysqli_connect_errno()) {
-     echo "Error: Could not connect to database.  Please try again later.";
+     echo "<p>Error: Could not connect to database.<br/>  
+            Please try again later.</p>";
      exit;
   }
 
-  $query = "insert into books values
-            ('".$isbn."', '".$author."', '".$title."', '".$price."')";
-  $result = $db->query($query);
+  $query = "insert into books values (?,?,?,?)";
+  $stmt = $db->prepare($query);
+  $stmt->bind_param('sssd',$isbn, $author, $title, $price);
+  $stmt->execute();
 
-  if ($result) {
-      echo  $db->affected_rows." book inserted into database.";
+  if ($stmt->affected_rows > 0) {
+      echo "<p>Book inserted into the database.</p>";
   } else {
-  	  echo "An error has occurred.  The item was not added.";
+  	  echo "<p>An error has occurred.<br/>  
+            The item was not added.</p>";
   }
 
   $db->close();

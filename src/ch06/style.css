@@ -30,6 +30,7 @@ nav div {
 nav div a {
     color: white;
 }
+
 nav div img {
     float: left;
 }
@@ -37,10 +38,17 @@ nav div img {
 nav div span {
     float: left;
     padding-left: 5px;
+    color: white;
 }
 
 section {
     margin-top: 50px;
+}
+
+p {
+    font-size: 16pt;
+    font-family:arial;
+    font-weight: bold;
 }
 
 footer {
@@ -57,6 +65,7 @@ footer p {
     color: white;
     font-size: 12pt;
     font-family:arial;
+    font-weight: unset;
 }
 
 footer p a {
