@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../phpmysql4e/.idea/WebLearning.iml" filepath="$PROJECT_DIR$/../phpmysql4e/.idea/WebLearning.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/phpmysql5e.iml" filepath="$PROJECT_DIR$/.idea/phpmysql5e.iml" />
     </modules>
   </component>
 </project>
